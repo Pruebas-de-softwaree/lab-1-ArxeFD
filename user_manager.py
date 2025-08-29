@@ -1,10 +1,10 @@
 import time
 class UserManager:
     def __init__(self):
-        self.users = []  
+        self.users = {}  
 
     def add_user(self, user_id, name):
-        self.users.append({"id": user_id, "name": name})
+        self.users.add({"id": user_id, "name": name})
 
     def find_user(self, user_id):
         user = None
@@ -31,3 +31,8 @@ if __name__ == "__main__":
     for i in range(1000):
 
         user_manager.add_user(i, f"Yo soy el num: {i}")
+    tiempoStart = time.time()
+    for i in range(1000):
+        user_manager.find_user(i)
+    tiempoEnd = time.time()
+    print("Duracion: ", tiempoEnd - tiempoStart, "s")
